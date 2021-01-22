@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>オセロゲーム</title>
+<link rel="stylesheet" href="css/index.css">
+<script type="text/javascript">
+	function check(){
+		var name =document.getElementById("name").value;
+		var pass =document.getElementById("pass").value;
+		var msg =document.getElementById("errorMsg");
+
+		var flag = true;
+		if(name == ""){
+			msg.innerHTML="名前を入力してください</br>"
+			flag = false;
+			return false;
+		}
+		if(pass == ""){
+			msg.innerHTML="パスワードを入力してください</br>"
+			flag = false;
+			return false;
+		}
+		return flag;
+	}
+
+</script>
+</head>
+<body>
+	<div class="content">
+		<header class="header-7">
+			<div class="box box-logo">
+				<h1>KaoruWiki</h1>
+			</div>
+			<div class="sp-nav">
+				<i class="fas fa-bars"></i>
+			</div>
+			<div class="box box-nav">
+				<ul class="inner-nav">
+					<li class="menu">Home</li>
+					<li class="menu">About</li>
+					<li class="menu">menu3</li>
+					<li class="menu">menu4</li>
+					<li class="menu">menu5</li>
+				</ul>
+			</div>
+		</header>
+
+		<div class="inner">
+			<div id="title">
+				<h1>オセロゲームへようこそ！！</h1>
+			</div>
+
+			<div id="login">
+				<form name='form-login' action="/Othello/RoginControlr"
+					method="post" name="form">
+					<span class="fontawesome-user"></span> <input type="text" id="name"
+						placeholder="Username" name="name"> <span
+						class="fontawesome-lock"></span> <input type="password" id="pass"
+						placeholder="Password" name="pass"> <input type="submit"
+						value="Login" onClick="return check();">
+				</form>
+			</div>
+		</div>
+		<div id="errorMsg" ></div>
+		<!--　フッター　-->
+		<footer>
+		<div class="name">Yamazaki Kaoru</div>
+		<div class="mail">yamazakisoccer@icloud.com</div>
+		</footer>
+	</div>
+</body>
+</html>
