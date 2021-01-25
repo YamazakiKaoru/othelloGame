@@ -11,7 +11,7 @@ public class PieceProcess {
 	Board board = new Board();
 
 
-	public boolean canTurnOver(Board board,Piece target) {
+	public  boolean canTurnOver(Board board,Piece target) {
 		this.board = board;
 
 		List<Boolean> results = new ArrayList<Boolean>();

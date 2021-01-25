@@ -18,7 +18,6 @@ public class Field {
 	public Field(String title,String pass){
 		this.fieldTitle = title;
 		this.pass = pass;
-		this.board = new Board();
 		number = 0;
 	}
 
@@ -34,8 +33,11 @@ public class Field {
 	}
 
 	public Board getBoard() {return board;}
+	public String getFieldTitle() {return fieldTitle;}
+	public int getNumber() {return number;}
 
-
+	public void setBoard(Board board) { this.board = board;}
+	public void setNumber(int number) { this.number = number;}
 
 
 	public boolean checkCanIn() {

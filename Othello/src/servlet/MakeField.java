@@ -1,5 +1,7 @@
 package servlet;
 
+
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -16,9 +18,9 @@ import model.Field.Field;
 public class MakeField extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    public MakeField() {
-        super();
-    }
+	public MakeField() {
+		super();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -26,21 +28,22 @@ public class MakeField extends HttpServlet {
 		Field field = (Field)application.getAttribute("Field");
 
 		if(field == null) {
-			field = new Field("誰でも歓迎！！","");
+			field = new Field("誰でも歓迎！！"," ");
 		}
 
+		//
+		application.setAttribute("Field", field);
 
-		//フォワードパスの設定
-		String fowardPath = "/WEB-INF/RoginResult.jsp";
-		RequestDispatcher dispatcher = request.getRequestDispatcher(fowardPath);
+		//フォワード先の指定
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/RoginResult.jsp");
 		dispatcher.forward(request, response);
-
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+		//フォワード先の指定
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/RoginResult.jsp");
+				dispatcher.forward(request, response);
 
 	}
 

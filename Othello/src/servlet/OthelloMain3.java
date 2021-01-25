@@ -10,23 +10,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Board.Board;
 import model.Board.Piece;
 import model.Board.PieceProcess;
 import model.Field.Field;
 
-@WebServlet("/OthelloMain")
-public class OthelloMain2 extends HttpServlet {
+@WebServlet("/OthelloMain3")
+public class OthelloMain3 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	PieceProcess pieceProcess = new PieceProcess();
 
-	public OthelloMain2() {
-	}
+    public OthelloMain3() {
+        super();
+    }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//アプリケーションスコープに保存されたボード情報を取得
 		ServletContext application = this.getServletContext();
 		Field field = (Field) application.getAttribute("Field");
+
+		field.setNumber(field.getNumber()+1);
 
 		//リクエストパラメータの取得
 		request.setCharacterEncoding("utf-8");
@@ -34,9 +37,8 @@ public class OthelloMain2 extends HttpServlet {
 		String state = request.getParameter("state");
 
 		//存在しないとき作成（初回リクエスト時）
-		if(field == null) {
-
-
+		if(field.getBoard() == null) {
+			field.setBoard(new Board());
 		}else if(id !=null){//オセロに何かを置こうとしたとき
 
 			String[] ids = id.split("_",0);
@@ -53,6 +55,7 @@ public class OthelloMain2 extends HttpServlet {
 			}
 
 			//ひっくりかえせたかどうか
+			PieceProcess pieceProcess = new PieceProcess();
 			boolean a =pieceProcess.canTurnOver(field.getBoard(), target);
 
 			if(!a) {//ひっくりかえせなかったら
@@ -62,17 +65,17 @@ public class OthelloMain2 extends HttpServlet {
 
 
 		//アプリケーションスコープにボードの情報を保存
-		application.setAttribute("Board", field.getBoard());
+		application.setAttribute("Field", field);
 
 		//フォワード先の指定
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/OthelloBoard.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/OthelloBoard2.jsp");
 		dispatcher.forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
 
+
+    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
 	}
