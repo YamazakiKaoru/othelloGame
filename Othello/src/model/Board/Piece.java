@@ -1,7 +1,7 @@
 package model.Board;
 
 public class Piece {
-	
+
     /** コマの状態を表す定数 */
     public static final String EMP = "  ";
     public static final String SIRO = "○ ";
@@ -22,14 +22,17 @@ public class Piece {
         setY(y);
         setState(EMP);
     }
-	//座標
+	/**  座標　*/
 	private int x;
 	private int y;
-	//状態
+
+	/**  状態（白、黒、EMP）*/
 	private String state;
 
+	/**  ボード情報*/
 	private Board getBoard;
 
+	//以下getter,setter
 	public Board getBoard() {
 		return getBoard;
 	}

@@ -14,7 +14,7 @@
 <body>
 
 ログイン成功しました！！
-<a href = "/Othello/OthelloMain3">
+<a href = "/Othello/OthelloMain">
 <div class="room">
 <div class="room-title"><%= field.getFieldTitle()%></div>
 <div class="numver"><%=field.getNumber()%>/2</div>

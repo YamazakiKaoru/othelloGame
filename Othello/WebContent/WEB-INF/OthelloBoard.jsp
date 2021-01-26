@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ page import = "model.Board.Board" %>
-    <% Board board = (Board)application.getAttribute("Board"); %>
+    <%@ page import = "model.Field.Field" %>
+    <%
+    Field field = (Field)application.getAttribute("Field");
+    Board board = field.getBoard();;
+    %>
 <!DOCTYPE html>
 <html>
 <head>

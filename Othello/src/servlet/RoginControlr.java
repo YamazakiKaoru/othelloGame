@@ -21,27 +21,24 @@ public class RoginControlr extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//リクエストパラメーターを取得
+		/** リクエストパラメーターを取得 */
 		request.setCharacterEncoding("utf-8");
 		String name = request.getParameter("name");
 		String pass = request.getParameter("pass");
 
 
-		//登録処理を実行
+		/** 登録処理を実行 */
 		String fowardPath = "/Othello/MakeField";
 		User user = new User(name,pass);
 		RoginCheck roginCheck = new RoginCheck();
 
-		//ログイン出来るかのチェック
+		/** ログイン出来るかのチェック */
 		if(roginCheck.check(user)) {
-			//セッションの取得
+			/** セッションの取得 */
 			HttpSession session = request.getSession();
 			session.setAttribute("User", user);
 		}else {
@@ -49,7 +46,7 @@ public class RoginControlr extends HttpServlet {
 		}
 
 
-		//フォワードパスの設定
+		/** フォワードパスの設定 */
 		response.sendRedirect(fowardPath);
 	}
 

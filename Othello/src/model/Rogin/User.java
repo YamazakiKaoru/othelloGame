@@ -1,20 +1,15 @@
 package model.Rogin;
 
 public class User {
+	/**  ユーザー名　*/
 	private String name;
+	/**  パスワード */
 	private String pass;
 
-	//白か黒かの情報
+	/** 白か黒かの情報 */
 	private String state;
 
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
+	//以下getter,setter
 	public User(String name,String pass){
 		this.name = name;
 		this.pass = pass;
@@ -35,6 +30,16 @@ public class User {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
 
 
 }

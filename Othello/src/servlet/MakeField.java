@@ -24,26 +24,27 @@ public class MakeField extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		/**  アプリケーションスコープの取得　*/
 		ServletContext application = this.getServletContext();
 		Field field = (Field)application.getAttribute("Field");
 
-		if(field == null) {
+		if(field == null) {//（初回リクエスト時）
 			field = new Field("誰でも歓迎！！"," ");
 		}
 
-		//
+		/** Field情報をアプリケーションスコープに保存*/
 		application.setAttribute("Field", field);
 
-		//フォワード先の指定
+		/** フォワード先の指定 */
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/RoginResult.jsp");
 		dispatcher.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//フォワード先の指定
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/RoginResult.jsp");
-				dispatcher.forward(request, response);
+		/** フォワード先の指定 */
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/RoginResult.jsp");
+		dispatcher.forward(request, response);
 
 	}
 
